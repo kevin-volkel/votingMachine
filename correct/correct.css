@@ -1,0 +1,31 @@
+h1{
+    text-align: center;
+    text-transform: uppercase;
+}
+
+html{
+    background-image: url("Merca.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    /* overflow: hidden; */
+}
+
+body{
+    width: 50vw;
+    background-color: rgba(0, 0, 0, 0.493);
+    color: white;
+    margin: auto;
+}
+
+img{
+    height: 70vh;
+}
+
+.container{
+    position: relative;
+    top: 1000px;
+    width: 78%;
+    margin: 0 auto;
+    transition: all 7s;
+}
