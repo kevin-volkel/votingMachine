@@ -1,5 +1,8 @@
 "use strict";
 
+body.addEventListener("contextmenu", function(){
+    alert("Choose carefully")
+})
 body.addEventListener("keypress", operationNixon)
 
 // Changing Colors
@@ -108,5 +111,5 @@ function correctChoice(){
     window.location.href = "correct/correct.html"
 }
 function wrongChoice(){
-    alert("Wrong")
+    window.location.href = "wrong/wrong.html"
 }

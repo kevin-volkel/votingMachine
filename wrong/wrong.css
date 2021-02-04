@@ -1,0 +1,46 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    background-color: black;
+    overflow: hidden;
+}
+
+h1, h3, p{
+    text-align: center;
+    color: white;
+}
+
+p{
+    margin-bottom: 7.5rem;
+}
+
+#nixon{
+    z-index: 100;
+}
+
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    background: white;
+    margin: 0 3rem;
+    height: 60vh;
+}
+
+button{
+    margin-top: 1rem;
+    top: 150px;
+    height: 1.5rem;
+    width: 10rem;
+    border-radius: 5rem;
+    outline: none;
+    position: relative;
+    transition: all 0.1s;
+}
+
+#winningText{
+    margin-top: calc(50vh - 1rem)
+}
