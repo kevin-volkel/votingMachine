@@ -100,10 +100,10 @@ function operationNixon(){
     buttons[rand3] = "Vote Edmund Muskie"
 
     console.log(buttons)
-    let temp = setInterval(createButton, 50);
+    let temp = setInterval(createButton, 75);
     setTimeout(function(){
         clearInterval(temp)
-    }, 1750)
+    }, 2625)
     
 }
 
