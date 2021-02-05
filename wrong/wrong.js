@@ -23,103 +23,127 @@ chisholm.addEventListener("mousedown", youLose)
 muskie.addEventListener("mousedown", youLose)
 
 function buttonsMove(event){
-    let speed = 9;
+    let speed = 15;
+    let y = 0;
+    let x = 0;
+    let angle = 0;
     let containerCoords = this.getBoundingClientRect();
     nixonBox = nixon.getBoundingClientRect();
     mcGovernBox = mcgovern.getBoundingClientRect();
     chisholmBox = chisholm.getBoundingClientRect();
     muskieBox = muskie.getBoundingClientRect();
 
-    
+
     let nixonCoords = {
-        top: nixonBox.top,
-        left: nixonBox.left
+        top: nixonBox.top - (nixon.style.height / 2),
+        left: nixonBox.left + (nixon.style.width / 2)
     }
     let mcGovernCoords = {
-        top: mcGovernBox.top,
-        left: mcGovernBox.left
+        top: mcGovernBox.top - (mcgovern.style.height / 2),
+        left: mcGovernBox.left + (mcgovern.style.width / 2)
     }
     let chisholmCoords = {
-        top: chisholmBox.top,
-        left: chisholmBox.left
+        top: chisholmBox.top - (chisholm.style.height / 2),
+        left: chisholmBox.left + (chisholm.style.width / 2)
     }
     let muskieCoords = {
-        top: muskieBox.top,
-        left: muskieBox.left
+        top: muskieBox.top - (muskie.style.height / 2),
+        left: muskieBox.left + (muskie.style.width / 2)
     }
 
     // Nixon Movement
-    if(nixonBox.top + 12 > event.clientY){ //Down
-        nixon.style.top = (nixonCoords.top - defaultTop) - ((nixonCoords.top - event.clientY) / 25) + "px"
+    y = Math.abs(event.clientY - nixonCoords.top)
+    x = Math.abs(event.clientX - nixonCoords.left)
+    angle = Math.atan(y/x)
+
+    if(nixonCoords.top + 12 > event.clientY){ //Down
+        nixon.style.top = (nixonCoords.top - defaultTop) - (Math.sin(angle) * speed) + "px"
     }else{ //Up
-        nixon.style.top = (nixonCoords.top - defaultTop) - ((nixonCoords.top - event.clientY) / 25) + "px"
+        nixon.style.top = (nixonCoords.top - defaultTop) + (Math.sin(angle) * speed) + "px"
     }
-    if(nixonBox.left + 80> event.clientX){ 
-        nixon.style.left = (nixonCoords.left - nixonDefaultX) - ((nixonCoords.left - event.clientX) / 25) + "px"
+    if(nixonCoords.left + 80> event.clientX){ 
+        nixon.style.left = (nixonCoords.left - nixonDefaultX) - (Math.cos(angle) * speed) + "px"
     }else{
-        nixon.style.left = (nixonCoords.left - nixonDefaultX) - ((nixonCoords.left - event.clientX) / 25) + "px"
+        nixon.style.left = (nixonCoords.left - nixonDefaultX) + (Math.cos(angle) * speed) + "px"
     }
     
+    // McGovern Movement
+    y = Math.abs(event.clientY - mcGovernCoords.top)
+    x = Math.abs(event.clientX - mcGovernCoords.left)
+    angle = Math.atan(y/x)
+
     // McGovern Y Movement
-    if(mcGovernBox.top > event.clientY){
-        if(mcGovernBox.top < containerCoords.bottom - 30){
-            mcgovern.style.top = (mcGovernCoords.top - defaultTop) + ((mcGovernCoords.top - event.clientY) / 25) + "px"
+    if(mcGovernCoords.top > event.clientY){
+        if(mcGovernCoords.top < containerCoords.bottom - 50){
+            mcgovern.style.top = (mcGovernCoords.top - defaultTop) + (Math.sin(angle) * speed) + "px"
         }
     }else{
-        if(mcGovernBox.top > containerCoords.top + 10){
-            mcgovern.style.top = (mcGovernCoords.top - defaultTop) + ((mcGovernCoords.top - event.clientY) / 25) + "px"
+        if(mcGovernCoords.top > containerCoords.top + 30){
+            mcgovern.style.top = (mcGovernCoords.top - defaultTop) - (Math.sin(angle) * speed) + "px"
         }
     }
     // McGovern X Movement
-    if(mcGovernBox.left > event.clientX){
-        if(mcGovernBox.left < containerCoords.right - 175){
-            mcgovern.style.left = (mcGovernCoords.left - mcGovernDefaultX) + ((mcGovernCoords.left - event.clientX) / 25) + "px"
+    if(mcGovernCoords.left > event.clientX){
+        if(mcGovernCoords.left < containerCoords.right - 220){
+            mcgovern.style.left = (mcGovernCoords.left - mcGovernDefaultX) + (Math.cos(angle) * speed) + "px"
         }
     }else{
-        if(mcGovernBox.left > containerCoords.left + 10){
-            mcgovern.style.left = (mcGovernCoords.left - mcGovernDefaultX) + ((mcGovernCoords.left - event.clientX) / 25) + "px"
+        if(mcGovernCoords.left > containerCoords.left + 30){
+            mcgovern.style.left = (mcGovernCoords.left - mcGovernDefaultX) - (Math.cos(angle) * speed) + "px"
         }
     }
 
+    // Chisholm Movement
+
+    y = Math.abs(event.clientY - chisholmCoords.top)
+    x = Math.abs(event.clientX - chisholmCoords.left)
+    angle = Math.atan(y/x)
+
     // Chisholm Y Movement
-    if(chisholmBox.top > event.clientY){
-        if(chisholmBox.top < containerCoords.bottom - 30){
-            chisholm.style.top = (chisholmCoords.top - defaultTop) + ((chisholmCoords.top - event.clientY) / 25) + "px"
+    if(chisholmCoords.top > event.clientY){
+        if(chisholmCoords.top < containerCoords.bottom - 50){
+            chisholm.style.top = (chisholmCoords.top - defaultTop) + (Math.sin(angle) * speed) + "px"
         }
     }else{
-        if(chisholmBox.top > containerCoords.top + 10){
-            chisholm.style.top = (chisholmCoords.top - defaultTop) + ((chisholmCoords.top - event.clientY) / 25) + "px"
+        if(chisholmCoords.top > containerCoords.top + 30){
+            chisholm.style.top = (chisholmCoords.top - defaultTop) - (Math.sin(angle) * speed) + "px"
         }
     }
     // Chisholm X Movement
-    if(chisholmBox.left > event.clientX){
-        if(chisholmBox.left < containerCoords.right - 175){
-            chisholm.style.left = (chisholmCoords.left - chisholmDefaultX) + ((chisholmCoords.left - event.clientX) / 25) + "px"
+    if(chisholmCoords.left > event.clientX){
+        if(chisholmCoords.left < containerCoords.right - 200){
+            chisholm.style.left = (chisholmCoords.left - chisholmDefaultX) + (Math.cos(angle) * speed) + "px"
         }
     }else{
-        if(chisholmBox.left > containerCoords.left + 10){
-            chisholm.style.left = (chisholmCoords.left - chisholmDefaultX) + ((chisholmCoords.left - event.clientX) / 25) + "px"
+        if(chisholmCoords.left > containerCoords.left + 30){
+            chisholm.style.left = (chisholmCoords.left - chisholmDefaultX) - (Math.cos(angle) * speed) + "px"
         }
     }
 
+    // Muskie Movement
+
+    y = Math.abs(event.clientY - muskieCoords.top)
+    x = Math.abs(event.clientX - muskieCoords.left)
+    angle = Math.atan(y/x)
+
     // Muskie Y Movement
-    if(muskieBox.top > event.clientY){
-        if(muskieBox.top < containerCoords.bottom - 30){
-            muskie.style.top = (muskieCoords.top - defaultTop) + ((muskieCoords.top - event.clientY) / 25) + "px"
+    if(muskieCoords.top > event.clientY){
+        if(muskieCoords.top < containerCoords.bottom - 50){
+            muskie.style.top = (muskieCoords.top - defaultTop) + (Math.sin(angle) * speed) + "px"
         }
     }else{
-        if(mcGovernBox.top > containerCoords.top + 10){
-            muskie.style.top = (muskieCoords.top - defaultTop) + ((muskieCoords.top - event.clientY) / 25) + "px"
+        if(muskieCoords.top > containerCoords.top + 30){
+            muskie.style.top = (muskieCoords.top - defaultTop) - (Math.sin(angle) * speed) + "px"
         }
     }
     // Muskie X  Movement
-    if(muskieBox.left > event.clientX){
-        if(muskieBox.left < containerCoords.right - 175){
-            muskie.style.left = (muskieCoords.left - muskieDefaultX) + ((muskieCoords.left - event.clientX) / 25) + "px"
+    if(muskieCoords.left > event.clientX){
+        if(muskieCoords.left < containerCoords.right - 200){
+            muskie.style.left = (muskieCoords.left - muskieDefaultX) + (Math.cos(angle) * speed) + "px"
         }
     }else{
-        if(muskieBox.left > containerCoords.left + 40){
-            muskie.style.left = (muskieCoords.left - muskieDefaultX) + ((muskieCoords.left - event.clientX) / 25) + "px"
+        if(muskieCoords.left > containerCoords.left + 30){
+            muskie.style.left = (muskieCoords.left - muskieDefaultX) - (Math.cos(angle) * speed) + "px"
         }
     }
 

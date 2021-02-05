@@ -44,7 +44,7 @@ function shrink(event){
     this.style.width = buttonSize.width + `px`
     this.style.fontSize = buttonSize.height / 5 + `px`
 
-    if(buttonSize.width <= 30){
+    if(buttonSize.width <= 45){
         this.remove();
         let elemList = document.getElementsByClassName("wrong");
         if(elemList.length == 0){
@@ -105,6 +105,27 @@ function operationNixon(){
         clearInterval(temp)
     }, 2625)
     
+    body.addEventListener("keydown", easterEgg)
+}
+
+let konamiCode = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a", "Enter"]
+let key = 0;
+function easterEgg(event){
+    if(event.key == konamiCode[key]){
+        key++;
+        if(event.key == "Enter"){
+            audio.volume = 0.05;
+            audio.play();
+
+            setTimeout(stopMusic, 10200);
+        }
+    }else{
+        key = 0;
+    }
+}
+
+function stopMusic(){
+    audio.pause();
 }
 
 function correctChoice(){
