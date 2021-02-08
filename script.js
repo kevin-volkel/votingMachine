@@ -69,7 +69,7 @@ function createButton(){
     }else{
         button.addEventListener("mouseover", turnRed)
         button.addEventListener("click", wrongChoice)
-        button.style.cursor = "not-allowed"
+        button.classList += " wrong"
     }
     button.addEventListener("mouseout", turnWhite)
     button.classList += " button"

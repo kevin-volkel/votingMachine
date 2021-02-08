@@ -8,6 +8,9 @@ html{
     overflow: hidden;
 }
 
+.wrong{
+    cursor: url("cursor.png"), pointer;
+}
 
 .buttonContainer{
     display: flex;
