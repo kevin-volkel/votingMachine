@@ -3,7 +3,7 @@
 body.addEventListener("contextmenu", function(){
     alert("Choose carefully")
 })
-body.addEventListener("keypress", operationNixon)
+// body.addEventListener("keypress", operationNixon)
 
 // Changing Colors
 nixon.addEventListener("click", correctChoice)
@@ -80,7 +80,7 @@ function createButton(){
 }
 
 function operationNixon(){
-    body.removeEventListener("keypress", operationNixon)
+    // body.removeEventListener("keypress", operationNixon)
     buttonContainer.innerHTML = "";
     buttonContainer.classList = "nixonContainer";
 
