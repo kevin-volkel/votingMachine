@@ -72,6 +72,7 @@ function createButton(){
         button.style.cursor = "not-allowed"
     }
     button.addEventListener("mouseout", turnWhite)
+    button.classList += " button"
     button.style.position = "relative"
     buttonContainer.appendChild(button)
     
@@ -112,11 +113,35 @@ function easterEgg(event){
     if(event.key == konamiCode[key]){
         key++;
         if(event.key == "Enter"){
+            body.removeEventListener("keydown", easterEgg)
             audio.volume = 0.05;
             audio.play();
             alert("God Bless America")
 
             setTimeout(stopMusic, 10200);
+
+            let buttons = document.getElementsByClassName("button")
+            console.log(buttons)
+            let blue = [0, 1, 2, 5, 6, 7, 10, 11, 12];
+            let red = [3, 4, 13, 14, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34]
+            let white = [8, 9, 15, 16, 17, 18, 19, 25, 26, 27, 28, 29]
+            for(let i = 0; i < blue.length; i++){
+                buttons[blue[i]].style.backgroundColor = "blue";
+                buttons[blue[i]].style.color = "blue";
+            }
+            for(let i = 0; i < red.length; i++){
+                buttons[red[i]].style.backgroundColor = "red";
+                buttons[red[i]].style.color = "red";
+            }
+            for(let i = 0; i < white.length; i++){
+                buttons[white[i]].style.backgroundColor = "white";
+                buttons[white[i]].style.color = "white";
+            }
+            for(let i = 0; i < buttons.length; i++){
+                buttons[i].removeEventListener("mouseover", turnGreen)
+                buttons[i].removeEventListener("mouseout", turnWhite)
+                buttons[i].removeEventListener("mouseover", turnRed)
+            }
         }
     }else{
         key = 0;
