@@ -26,7 +26,7 @@ function turnRed(event){
 }
 
 function turnWhite(event){
-    this.style.backgroundColor = "white";
+    this.style.backgroundColor = "#f26932";
 }
 
 //Shrinking the wrong option
@@ -95,15 +95,13 @@ function operationNixon(){
         rand2 = Math.floor(Math.random() * 34 )
         rand3 = Math.floor(Math.random() * 34 )
     }
-    buttons[rand1] = "Vote Humbert Humphrey"
+    buttons[rand1] = "Vote George McGovern"
     buttons[rand2] = "Vote Shirley Chisholm"
-    buttons[rand3] = "Vote Edmund Muskie"
+    buttons[rand3] = "Vote Edmund Muskie"   
 
-    console.log(buttons)
-    let temp = setInterval(createButton, 75);
-    setTimeout(function(){
-        clearInterval(temp)
-    }, 2625)
+    for(let i = 0; i < 35; i++){
+        setTimeout(createButton, i * 50)
+    }
     
     body.addEventListener("keydown", easterEgg)
 }
@@ -116,6 +114,7 @@ function easterEgg(event){
         if(event.key == "Enter"){
             audio.volume = 0.05;
             audio.play();
+            alert("God Bless America")
 
             setTimeout(stopMusic, 10200);
         }

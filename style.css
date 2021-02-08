@@ -4,7 +4,7 @@
 }
 
 html{
-    background: black;
+    background: #106977;
     overflow: hidden;
 }
 
@@ -26,6 +26,9 @@ button{
     user-select: none;
     border: none;
     margin: 1px;
+    color: black;
+    font-weight: bolder;
+    background-color: #f26932;
 }
 .firstButtons{
     margin: auto;

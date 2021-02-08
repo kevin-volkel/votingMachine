@@ -23,7 +23,7 @@ chisholm.addEventListener("mousedown", youLose)
 muskie.addEventListener("mousedown", youLose)
 
 function buttonsMove(event){
-    let speed = 15;
+    let speed = 5;
     let y = 0;
     let x = 0;
     let angle = 0;
@@ -56,12 +56,12 @@ function buttonsMove(event){
     x = Math.abs(event.clientX - nixonCoords.left)
     angle = Math.atan(y/x)
 
-    if(nixonCoords.top + 12 > event.clientY){ //Down
+    if(nixonCoords.top - 12 > event.clientY){ //Down
         nixon.style.top = (nixonCoords.top - defaultTop) - (Math.sin(angle) * speed) + "px"
     }else{ //Up
         nixon.style.top = (nixonCoords.top - defaultTop) + (Math.sin(angle) * speed) + "px"
     }
-    if(nixonCoords.left + 80> event.clientX){ 
+    if(nixonCoords.left + 90> event.clientX){ 
         nixon.style.left = (nixonCoords.left - nixonDefaultX) - (Math.cos(angle) * speed) + "px"
     }else{
         nixon.style.left = (nixonCoords.left - nixonDefaultX) + (Math.cos(angle) * speed) + "px"
@@ -73,17 +73,17 @@ function buttonsMove(event){
     angle = Math.atan(y/x)
 
     // McGovern Y Movement
-    if(mcGovernCoords.top > event.clientY){
-        if(mcGovernCoords.top < containerCoords.bottom - 50){
+    if(mcGovernCoords.top + 12> event.clientY){
+        if(mcGovernCoords.top + 12 < containerCoords.bottom - 50){
             mcgovern.style.top = (mcGovernCoords.top - defaultTop) + (Math.sin(angle) * speed) + "px"
         }
     }else{
-        if(mcGovernCoords.top > containerCoords.top + 30){
+        if(mcGovernCoords.top + 12> containerCoords.top + 30){
             mcgovern.style.top = (mcGovernCoords.top - defaultTop) - (Math.sin(angle) * speed) + "px"
         }
     }
     // McGovern X Movement
-    if(mcGovernCoords.left > event.clientX){
+    if(mcGovernCoords.left + 90 > event.clientX){
         if(mcGovernCoords.left < containerCoords.right - 220){
             mcgovern.style.left = (mcGovernCoords.left - mcGovernDefaultX) + (Math.cos(angle) * speed) + "px"
         }
@@ -100,17 +100,17 @@ function buttonsMove(event){
     angle = Math.atan(y/x)
 
     // Chisholm Y Movement
-    if(chisholmCoords.top > event.clientY){
-        if(chisholmCoords.top < containerCoords.bottom - 50){
+    if(chisholmCoords.top + 12 > event.clientY){
+        if(chisholmCoords.top + 12 < containerCoords.bottom - 50){
             chisholm.style.top = (chisholmCoords.top - defaultTop) + (Math.sin(angle) * speed) + "px"
         }
     }else{
-        if(chisholmCoords.top > containerCoords.top + 30){
+        if(chisholmCoords.top + 12 > containerCoords.top + 30){
             chisholm.style.top = (chisholmCoords.top - defaultTop) - (Math.sin(angle) * speed) + "px"
         }
     }
     // Chisholm X Movement
-    if(chisholmCoords.left > event.clientX){
+    if(chisholmCoords.left + 90 > event.clientX){
         if(chisholmCoords.left < containerCoords.right - 200){
             chisholm.style.left = (chisholmCoords.left - chisholmDefaultX) + (Math.cos(angle) * speed) + "px"
         }
@@ -121,23 +121,22 @@ function buttonsMove(event){
     }
 
     // Muskie Movement
-
     y = Math.abs(event.clientY - muskieCoords.top)
     x = Math.abs(event.clientX - muskieCoords.left)
     angle = Math.atan(y/x)
 
     // Muskie Y Movement
-    if(muskieCoords.top > event.clientY){
-        if(muskieCoords.top < containerCoords.bottom - 50){
+    if(muskieCoords.top + 12 > event.clientY){
+        if(muskieCoords.top + 12 < containerCoords.bottom - 50){
             muskie.style.top = (muskieCoords.top - defaultTop) + (Math.sin(angle) * speed) + "px"
         }
     }else{
-        if(muskieCoords.top > containerCoords.top + 30){
+        if(muskieCoords.top + 12 > containerCoords.top + 30){
             muskie.style.top = (muskieCoords.top - defaultTop) - (Math.sin(angle) * speed) + "px"
         }
     }
     // Muskie X  Movement
-    if(muskieCoords.left > event.clientX){
+    if(muskieCoords.left + 90 > event.clientX){
         if(muskieCoords.left < containerCoords.right - 200){
             muskie.style.left = (muskieCoords.left - muskieDefaultX) + (Math.cos(angle) * speed) + "px"
         }
